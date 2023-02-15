@@ -1,14 +1,10 @@
 import axios from 'axios';
 
-const API_URL = '/api/users/';
-
-const instance = axios.create({
-  baseURL: 'https://bingofy-be.onrender.com',
-});
+const API_URL = 'https://bingofy-be.onrender.com/api/users/';
 
 // Register user
 const register = async (userData) => {
-  const response = await instance.post(API_URL, userData);
+  const response = await axios.post(API_URL, userData);
 
   if (response.data) {
     localStorage.setItem('user', JSON.stringify(response.data));
@@ -19,7 +15,7 @@ const register = async (userData) => {
 
 // Login user
 const login = async (userData) => {
-  const response = await instance.post(API_URL + 'login', userData);
+  const response = await axios.post(API_URL + 'login', userData);
 
   if (response.data) {
     localStorage.setItem('user', JSON.stringify(response.data));

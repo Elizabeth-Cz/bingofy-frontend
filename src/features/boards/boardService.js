@@ -1,10 +1,6 @@
 import axios from 'axios';
 
-const instance = axios.create({
-  baseURL: 'https://bingofy-be.onrender.com',
-});
-
-const API_URL = '/api/boards/';
+const API_URL = 'https://bingofy-be.onrender.com/api/boards/';
 
 // Create new board
 const createBoard = async (boardData, token) => {
@@ -14,7 +10,7 @@ const createBoard = async (boardData, token) => {
     },
   };
 
-  const response = await instance.post(API_URL, boardData, config);
+  const response = await axios.post(API_URL, boardData, config);
 
   return response.data;
 };
@@ -27,7 +23,7 @@ const getBoards = async (token) => {
     },
   };
 
-  const response = await instance.get(API_URL, config);
+  const response = await axios.get(API_URL, config);
 
   return response.data;
 };
@@ -40,7 +36,7 @@ const deleteBoard = async (boardId, token) => {
     },
   };
 
-  const response = await instance.delete(API_URL + boardId, config);
+  const response = await axios.delete(API_URL + boardId, config);
 
   return response.data;
 };
@@ -53,7 +49,7 @@ const updateBoard = async (boardId, data, token) => {
     },
   };
 
-  const response = await instance.put(API_URL + boardId, data, config);
+  const response = await axios.put(API_URL + boardId, data, config);
 
   return response.data;
 };
